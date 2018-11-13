@@ -97,27 +97,51 @@
     </dependency>
   </dependencies>
 
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <excludes>
+            <exclude>
+              **/integration/**
+            </exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>test-jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
   <profiles>
     <profile>
-      <id>no-integration-test</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
+      <id>dropbox-test</id>
       <build>
         <plugins>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
-            <configuration>
-              <excludes>
-                <exclude>
-                  **/integration/**
-                </exclude>
-              </excludes>
+            <configuration combine.self="override">
+              <includes>
+                <include>**/*Test.java</include>
+              </includes>
             </configuration>
           </plugin>
         </plugins>
       </build>
+
     </profile>
   </profiles>
 

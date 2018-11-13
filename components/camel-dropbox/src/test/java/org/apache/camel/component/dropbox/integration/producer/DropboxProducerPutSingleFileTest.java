@@ -16,10 +16,10 @@
  */
 package org.apache.camel.component.dropbox.integration.producer;
 
-import java.util.List;
-
-import org.apache.camel.Exchange;
-import org.apache.camel.Processor;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.Map;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.dropbox.integration.DropboxTestSupport;
 import org.apache.camel.component.dropbox.util.DropboxConstants;
@@ -30,64 +30,26 @@ import org.junit.Test;
 
 public class DropboxProducerPutSingleFileTest extends DropboxTestSupport {
 
-    public DropboxProducerPutSingleFileTest() throws Exception { }
-
-    @Test
-    public void testCamelDropbox() throws Exception {
-        template.send("direct:start", new Processor() {
-            @Override
-            public void process(Exchange exchange) throws Exception {
-                exchange.getIn().setHeader("test", "test");
-            }
-        });
-
-
-        MockEndpoint mock = getMockEndpoint("mock:result");
-        mock.expectedMinimumMessageCount(1);       
-        assertMockEndpointsSatisfied();
-
-        List<Exchange> exchanges = mock.getReceivedExchanges();
-        Exchange exchange = exchanges.get(0);
-        Object header =  exchange.getIn().getHeader(DropboxResultHeader.UPLOADED_FILE.name());
-        Object body = exchange.getIn().getBody();
-        assertNotNull(header);
-        assertNotNull(body);
-    }
-
     @Test
     public void testCamelDropboxWithOptionInHeader() throws Exception {
-        template.send("direct:start2", new Processor() {
-            @Override
-            public void process(Exchange exchange) throws Exception {
-                exchange.getIn().setHeader("test", "test");
-            }
-        });
-
+        final Path file = Files.createTempFile("camel", ".txt");
+        final Map<String, Object> headers = new HashMap<>();
+        headers.put(DropboxConstants.HEADER_LOCAL_PATH, file.toAbsolutePath().toString());
+        headers.put(DropboxConstants.HEADER_UPLOAD_MODE, DropboxUploadMode.add);
+        template.sendBodyAndHeaders("direct:start2", null, headers);
 
         MockEndpoint mock = getMockEndpoint("mock:result");
         mock.expectedMinimumMessageCount(1);
+        mock.expectedHeaderReceived(DropboxResultHeader.UPLOADED_FILE.name(), workdir + "/newFile.txt");
         assertMockEndpointsSatisfied();
-
-        List<Exchange> exchanges = mock.getReceivedExchanges();
-        Exchange exchange = exchanges.get(0);
-        Object header =  exchange.getIn().getHeader(DropboxResultHeader.UPLOADED_FILE.name());
-        Object body = exchange.getIn().getBody();
-        assertNotNull(header);
-        assertNotNull(body);
     }
 
     @Override
     protected RouteBuilder createRouteBuilder() throws Exception {
         return new RouteBuilder() {
             public void configure() {
-                from("direct:start")
-                        .to("dropbox://put?accessToken={{accessToken}}&uploadMode=add&localPath=/XXX")
-                        .to("mock:result");
-
                 from("direct:start2")
-                    .setHeader(DropboxConstants.HEADER_LOCAL_PATH, constant("/XXX"))
-                    .setHeader(DropboxConstants.HEADER_UPLOAD_MODE, constant(DropboxUploadMode.add))
-                    .to("dropbox://put?accessToken={{accessToken}}")
+                        .to("dropbox://put?accessToken={{accessToken}}&remotePath=" + workdir + "/newFile.txt")
                     .to("mock:result");
             }
         };
