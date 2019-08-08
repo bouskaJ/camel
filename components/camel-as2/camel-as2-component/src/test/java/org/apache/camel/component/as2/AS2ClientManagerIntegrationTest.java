@@ -144,7 +144,7 @@ public class AS2ClientManagerIntegrationTest extends AbstractAS2TestSupport {
     private static final String[] SIGNED_RECEIPT_MIC_ALGORITHMS = new String[] {"sha1", "md5"};
     private static final String DISPOSITION_NOTIFICATION_OPTIONS = "signed-receipt-protocol=optional,pkcs7-signature; signed-receipt-micalg=optional,sha1";
     private static final int PARTNER_TARGET_PORT = 8888;
-    private static final int MDN_TARGET_PORT = AvailablePortFinder.getNextAvailable(8889);
+    private static final int MDN_TARGET_PORT = 8889;
     private static final String RECIPIENT_DELIVERY_ADDRESS = "http://localhost:" + MDN_TARGET_PORT + "/handle-receipts";
     private static final String REPORTING_UA = "Server Responding with MDN";
 
@@ -514,6 +514,7 @@ public class AS2ClientManagerIntegrationTest extends AbstractAS2TestSupport {
     public static void teardownTest() throws Exception {
         if (serverConnection != null) {
             serverConnection.stopListening("/");
+            serverConnection.close();
         }
     }
 
