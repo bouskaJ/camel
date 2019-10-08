@@ -1,0 +1,29 @@
+{
+  "id" : "34e32a7e-37ec-4ca7-86a4-611fffccf33b",
+  "name" : "rest_api_latest_serverinfo",
+  "request" : {
+    "url" : "/rest/api/latest/serverInfo",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\"baseUrl\":\"http://localhost:8080\",\"version\":\"8.4.0\",\"versionNumbers\":[8,4,0],\"deploymentType\":\"Server\",\"buildNumber\":804001,\"buildDate\":\"2019-09-09T00:00:00.000+0000\",\"databaseBuildNumber\":804001,\"serverTime\":\"2019-10-08T14:35:22.143+0000\",\"scmInfo\":\"a071452da0cda52aa7f8d05a411ca434beaf3c1f\",\"serverTitle\":\"JIRA\"}",
+    "headers" : {
+      "X-AREQUESTID" : "875x587x1",
+      "X-ASESSIONID" : "1w82n2r",
+      "X-XSS-Protection" : "1; mode=block",
+      "X-Content-Type-Options" : "nosniff",
+      "X-Frame-Options" : "SAMEORIGIN",
+      "Content-Security-Policy" : "frame-ancestors 'self'",
+      "X-ASEN" : "SEN-L14356777",
+      "X-Seraph-LoginReason" : "OK",
+      "X-AUSERNAME" : "bouska",
+      "Cache-Control" : "no-cache, no-store, no-transform",
+      "Content-Type" : "application/json;charset=UTF-8",
+      "Date" : "Tue, 08 Oct 2019 14:35:21 GMT"
+    }
+  },
+  "uuid" : "34e32a7e-37ec-4ca7-86a4-611fffccf33b",
+  "persistent" : true,
+  "insertionIndex" : 15
+}

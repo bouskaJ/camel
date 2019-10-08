@@ -1,0 +1,30 @@
+{
+  "id" : "32f9a343-4e15-433f-a27e-aa9e3b157258",
+  "name" : "rest_api_latest_issuetype",
+  "request" : {
+    "url" : "/rest/api/latest/issuetype",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "[{\"self\":\"http://localhost:8080/rest/api/latest/issuetype/10003\",\"id\":\"10003\",\"description\":\"A task that needs to be done.\",\"iconUrl\":\"http://localhost:8080/secure/viewavatar?size=xsmall&avatarId=10318&avatarType=issuetype\",\"name\":\"Task\",\"subtask\":false,\"avatarId\":10318},{\"self\":\"http://localhost:8080/rest/api/latest/issuetype/10000\",\"id\":\"10000\",\"description\":\"The sub-task of the issue\",\"iconUrl\":\"http://localhost:8080/images/icons/issuetypes/subtask_alternate.png\",\"name\":\"Sub-task\",\"subtask\":true},{\"self\":\"http://localhost:8080/rest/api/latest/issuetype/10002\",\"id\":\"10002\",\"description\":\"Created by Jira Software - do not edit or delete. Issue type for a user story.\",\"iconUrl\":\"http://localhost:8080/images/icons/issuetypes/story.svg\",\"name\":\"Story\",\"subtask\":false},{\"self\":\"http://localhost:8080/rest/api/latest/issuetype/10004\",\"id\":\"10004\",\"description\":\"A problem which impairs or prevents the functions of the product.\",\"iconUrl\":\"http://localhost:8080/secure/viewavatar?size=xsmall&avatarId=10303&avatarType=issuetype\",\"name\":\"Bug\",\"subtask\":false,\"avatarId\":10303},{\"self\":\"http://localhost:8080/rest/api/latest/issuetype/10001\",\"id\":\"10001\",\"description\":\"Created by Jira Software - do not edit or delete. Issue type for a big user story that needs to be broken down.\",\"iconUrl\":\"http://localhost:8080/images/icons/issuetypes/epic.svg\",\"name\":\"Epic\",\"subtask\":false}]",
+    "headers" : {
+      "X-AREQUESTID" : "870x578x1",
+      "X-XSS-Protection" : "1; mode=block",
+      "X-Content-Type-Options" : "nosniff",
+      "X-Frame-Options" : "SAMEORIGIN",
+      "Content-Security-Policy" : "frame-ancestors 'self'",
+      "X-ASEN" : "SEN-L14356777",
+      "Set-Cookie" : [ "JSESSIONID=4580AF862D025520B45056B81D94A139; Path=/; HttpOnly", "atlassian.xsrf.token=B5I0-NV8Q-J552-2AYC_f99b3413ce0f036de5321942016188b89abcfe21_lin; Path=/" ],
+      "X-Seraph-LoginReason" : "OK",
+      "X-ASESSIONID" : "166y8x8",
+      "X-AUSERNAME" : "bouska",
+      "Cache-Control" : "no-cache, no-store, no-transform",
+      "Content-Type" : "application/json;charset=UTF-8",
+      "Date" : "Tue, 08 Oct 2019 14:30:10 GMT"
+    }
+  },
+  "uuid" : "32f9a343-4e15-433f-a27e-aa9e3b157258",
+  "persistent" : true,
+  "insertionIndex" : 6
+}

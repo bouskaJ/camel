@@ -1,0 +1,29 @@
+{
+  "id" : "7d58bf10-d5a7-4a51-b77a-efa9b56a769a",
+  "name" : "rest_api_latest_priority",
+  "request" : {
+    "url" : "/rest/api/latest/priority",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "[{\"self\":\"http://localhost:8080/rest/api/2/priority/1\",\"statusColor\":\"#ff7452\",\"description\":\"This problem will block progress.\",\"iconUrl\":\"http://localhost:8080/images/icons/priorities/highest.svg\",\"name\":\"Highest\",\"id\":\"1\"},{\"self\":\"http://localhost:8080/rest/api/2/priority/2\",\"statusColor\":\"#ff8f73\",\"description\":\"Serious problem that could block progress.\",\"iconUrl\":\"http://localhost:8080/images/icons/priorities/high.svg\",\"name\":\"High\",\"id\":\"2\"},{\"self\":\"http://localhost:8080/rest/api/2/priority/3\",\"statusColor\":\"#ffab00\",\"description\":\"Has the potential to affect progress.\",\"iconUrl\":\"http://localhost:8080/images/icons/priorities/medium.svg\",\"name\":\"Medium\",\"id\":\"3\"},{\"self\":\"http://localhost:8080/rest/api/2/priority/4\",\"statusColor\":\"#0065ff\",\"description\":\"Minor problem or easily worked around.\",\"iconUrl\":\"http://localhost:8080/images/icons/priorities/low.svg\",\"name\":\"Low\",\"id\":\"4\"},{\"self\":\"http://localhost:8080/rest/api/2/priority/5\",\"statusColor\":\"#2684ff\",\"description\":\"Trivial problem with little or no impact on progress.\",\"iconUrl\":\"http://localhost:8080/images/icons/priorities/lowest.svg\",\"name\":\"Lowest\",\"id\":\"5\"}]",
+    "headers" : {
+      "X-AREQUESTID" : "870x579x1",
+      "X-ASESSIONID" : "166y8x8",
+      "X-XSS-Protection" : "1; mode=block",
+      "X-Content-Type-Options" : "nosniff",
+      "X-Frame-Options" : "SAMEORIGIN",
+      "Content-Security-Policy" : "frame-ancestors 'self'",
+      "X-ASEN" : "SEN-L14356777",
+      "X-Seraph-LoginReason" : "OK",
+      "X-AUSERNAME" : "bouska",
+      "Cache-Control" : "no-cache, no-store, no-transform",
+      "Content-Type" : "application/json;charset=UTF-8",
+      "Date" : "Tue, 08 Oct 2019 14:30:10 GMT"
+    }
+  },
+  "uuid" : "7d58bf10-d5a7-4a51-b77a-efa9b56a769a",
+  "persistent" : true,
+  "insertionIndex" : 7
+}
