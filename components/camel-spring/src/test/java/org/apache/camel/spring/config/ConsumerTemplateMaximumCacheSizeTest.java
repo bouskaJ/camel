@@ -16,6 +16,8 @@
  */
 package org.apache.camel.spring.config;
 
+import static org.awaitility.Awaitility.await;
+
 import org.apache.camel.CamelContext;
 import org.apache.camel.ConsumerTemplate;
 import org.apache.camel.Endpoint;
@@ -23,6 +25,8 @@ import org.apache.camel.spring.SpringRunWithTestSupport;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
+
+import java.util.concurrent.TimeUnit;
 
 @ContextConfiguration
 public class ConsumerTemplateMaximumCacheSizeTest extends SpringRunWithTestSupport {
@@ -52,12 +56,11 @@ public class ConsumerTemplateMaximumCacheSizeTest extends SpringRunWithTestSuppo
         // the eviction is async so force cleanup
         template.cleanUp();
 
-        // eviction may still run a bit
-        int currentCacheSize = template.getCurrentCacheSize();
-        assertTrue("Size should be around 50, but was " + currentCacheSize, currentCacheSize <= 53);
+        await().atMost(1, TimeUnit.SECONDS).until(() -> template.getCurrentCacheSize() == 50);
+        assertEquals("Size should be 50" + template.getCurrentCacheSize(), 50, template.getCurrentCacheSize());
         template.stop();
 
-        // should be 0
+        await().atMost(1, TimeUnit.SECONDS).until(() -> template.getCurrentCacheSize() == 0);
         assertEquals("Size should be 0", 0, template.getCurrentCacheSize());
     }
 
